@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title> ¯\_(ツ)_/¯ </title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="dist/css/main.css">
+		
+	</head>
+	<body>
+
+
+		<form method="GET">
+			<h1>Create A Personalized Meal Plan</h1>
+			<h2>Choose The Following:</h2>
+			
+			<h3>Check Food Group</h3>
+			<label>
+				<input type="checkbox" name="meats" value="meats" id="meats" class="checkbox"> Meats
+			</label>
+			<label>
+				<input type="checkbox" name="vegetables" value="vegetables" id="vegetables" class="checkbox"> Vegetables
+			</label>
+			<label>
+				<input type="checkbox" name="grains" value="grains" id="grains" class="checkbox"> Grains
+			</label>
+			<label>
+				<input type="checkbox" name="dairy" value="dairy" id="dairy" class="checkbox"> Dairy
+			</label>
+			<label>
+				<input type="text" name="calories" id="calories" placeholder="1200"> Calories
+			</label>
+			
+			<button type="button" id="search">Search</button>
+		</form>
+
+		<hr/>
+
+		<div id="results-container">
+			<ul id="results"></ul>
+			
+		</div>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="dist/js/main.js"></script>
+		<!-- <script src="dist/js/FoodToForkModule.js"></script>
+		<script src="dist/js/USDAModule.js"></script> -->
+		<script src="dist/js/EdamamModule.js"></script>
+
+	</body>
+</html>
