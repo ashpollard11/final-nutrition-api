@@ -82,6 +82,12 @@ body {
 	body #results li {
 		flex-direction: row;
 	}
+	body #results li article {
+		margin-top: 0;
+	}
+	body #results li img {
+		margin-left: auto;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
@@ -92,6 +98,12 @@ body {
 	}
 	body #results li {
 		flex-direction: column-reverse;
+	}
+	body #results li article {
+		margin-top: 20px;
+	}
+	body #results li img {
+		margin-left: 0;
 	}
 }
 
@@ -139,6 +151,11 @@ h2 {
 	border: none;
 	border-radius: 10px;
 	background: rgba(114, 7, 60, 0.8);
+	transition: 0.5s;
+}
+
+#get-started:hover, #search:hover {
+	background-color: #9fceef;
 }
 
 #get-started {
@@ -150,7 +167,7 @@ h2 {
 	background: #72073c;
 }
 
-#search-form {
+.search-form {
 	text-align: center;
 	line-height: 2;
 	padding: 1em;
@@ -167,6 +184,8 @@ input {
 
 .suggestions {
 	line-height: 1.2;
+	display: flex;
+	flex-direction: column;
 }
 
 /* 2. Content ================================= */
@@ -191,19 +210,40 @@ input {
 	font-size: 18px;
 	border: none;
 	cursor: pointer;
+	transition: 0.5s;
 }
 
-#results li div div div {
+#results li button:hover {
+	color: #9fceef;
+}
+
+#results li article {
+	margin-top: 20px;
+	margin-right: auto;
+}
+
+#results li article a {
+	font-size: 25px;
+}
+
+#results li article section p {
+	display: none;
+}
+
+#results li article section p.is-open {
+	display: block;
+}
+
+#results li article section div {
 	display: flex;
 }
 
-#results li div div div p {
-	cursor: pointer;
-	transition: 0.8s;
+footer {
+	text-align: center;
 }
 
-#results li div div div p:hover {
-	color: gold;
+footer img {
+	width: 75px;
 }
 
 /*# sourceMappingURL=main.css.map */

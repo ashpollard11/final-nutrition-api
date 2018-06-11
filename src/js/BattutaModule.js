@@ -27,7 +27,12 @@ var BattutaModule = (function() {
 		.then(function (results) {
 			console.log(results.data);
 			results.data.forEach((country) => {
-				countryArray.push(country.name);
+				if (countryArray.includes(country.name)) {
+					null
+				} else {
+					countryArray.push(country.name);
+				}
+				
 			})
 			console.log(countryArray);
 

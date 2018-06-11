@@ -14,7 +14,7 @@ var EdamamModule = function () {
 	var results = document.querySelector('#results');
 
 	//form
-	var form = document.querySelector('#search-form');
+	var form = document.querySelector('.search-form');
 
 	//on click of the search button, we loop through the
 	//checkboxes to see if there are any checked. If there
@@ -53,14 +53,16 @@ var EdamamModule = function () {
 		recipeArray.forEach(function (item) {
 			console.log(item.recipe);
 
+			// if (item.recipe.calories <= calories) {
+
 			//first, we make a container = li.
 			//container holding all the data
 			var liCont = document.createElement('li');
 
-			//second, we make a div to hold the recipe info.
+			//second, we make an article to hold the recipe info.
 			//this will be useful for styling/flexibility.
 			//it will be appended to the liCont.
-			var innerDiv = document.createElement('div');
+			var innerArticle = document.createElement('article');
 
 			//then the image, with a fallback.
 			//if there is an image, include it
@@ -90,33 +92,16 @@ var EdamamModule = function () {
 			var healthP = document.createElement('p');
 
 			//ingredients container
-			var ingredientsCont = document.createElement('div');
+			var ingredientsSection = document.createElement('section');
 
 			//ingredients inner container
 			var ingredientsInner = document.createElement('div');
 
 			//name
-			var ingredientsTitle = document.createElement('p');
+			var ingredientsTitle = document.createElement('h4');
 
 			//drop button
 			var ingredientsDrop = document.createElement('button');
-
-			ingredientsTitle.addEventListener('click', function () {
-				item.recipe.ingredientLines.forEach(function (ingredient) {
-					//list ingredients
-					var ingredientP = document.createElement('p');
-					ingredientP.innerHTML = ingredient;
-					ingredientsCont.appendChild(ingredientP);
-
-					ingredientsDrop.innerHTML = '&#9650;';
-
-					ingredientsDrop.addEventListener('click', function () {
-						//close container
-						ingredientP.style.display = 'none';
-						ingredientsDrop.innerHTML = '&#9660;';
-					});
-				});
-			});
 
 			//add content.
 			imgCont.src = thumbnail;
@@ -137,20 +122,40 @@ var EdamamModule = function () {
 
 			//append everything
 			results.appendChild(liCont);
-			liCont.appendChild(innerDiv);
+			liCont.appendChild(innerArticle);
 
-			innerDiv.appendChild(link);
+			innerArticle.appendChild(link);
 			link.appendChild(linkTitle);
 
-			innerDiv.appendChild(calP);
-			innerDiv.appendChild(dietP);
-			innerDiv.appendChild(healthP);
-			innerDiv.appendChild(ingredientsCont);
-			ingredientsCont.appendChild(ingredientsInner);
+			innerArticle.appendChild(calP);
+			innerArticle.appendChild(dietP);
+			innerArticle.appendChild(healthP);
+			innerArticle.appendChild(ingredientsSection);
+			ingredientsSection.appendChild(ingredientsInner);
 			ingredientsInner.appendChild(ingredientsTitle);
 			ingredientsInner.appendChild(ingredientsDrop);
 
 			liCont.appendChild(imgCont);
+
+			item.recipe.ingredientLines.forEach(function (ingredient) {
+				//list ingredients
+				var ingredientP = document.createElement('p');
+				ingredientP.innerHTML = ingredient;
+				ingredientsSection.appendChild(ingredientP);
+
+				//listen for open or closed container
+				ingredientsDrop.addEventListener('click', function () {
+					ingredientP.classList.toggle('is-open');
+					if (ingredientP.classList.contains('is-open')) {
+						ingredientsDrop.innerHTML = '&#9650;';
+					} else {
+						ingredientsDrop.innerHTML = '&#9660;';
+					}
+				});
+			});
+			// } else {
+			// 	null
+			// }
 		});
 	};
 

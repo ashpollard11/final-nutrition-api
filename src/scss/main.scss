@@ -37,6 +37,14 @@ body {
 
 			li {
 				flex-direction: row;
+
+				article {
+					margin-top: 0;
+				}
+
+				img {
+					margin-left: auto;
+				}
 			}
 		}
 	}
@@ -53,6 +61,14 @@ body {
 		#results {
 			li {
 				flex-direction: column-reverse;
+
+				article {
+					margin-top: 20px;
+				}
+
+				img {
+					margin-left: 0;
+				}
 			}
 		}
 	}
@@ -102,6 +118,11 @@ h2 {
 	border: none;
 	border-radius: 10px;
 	background: rgba(114, 7, 60, 0.8);
+	transition: 0.5s;
+
+	&:hover {
+		background-color: #9fceef;
+	}
 }
 
 #get-started {
@@ -114,7 +135,7 @@ h2 {
 
 }
 
-#search-form {
+.search-form {
 	text-align: center;
 	line-height: 2;
 	padding: 1em;
@@ -131,6 +152,8 @@ input {
 
 .suggestions {
 	line-height: 1.2;
+	display: flex;
+	flex-direction: column;
 }
 
 /* 2. Content ================================= */
@@ -155,27 +178,46 @@ input {
 			font-size: 18px;
 			border: none;
 			cursor: pointer;
+			transition: 0.5s;
+
+			&:hover {
+				color: #9fceef;
+			}
 		}
 
-		div {
-			div {
+		article {
+			margin-top: 20px;
+			margin-right: auto;
+
+			a {
+				font-size: 25px;
+			}
+
+			section {
+
+				p {
+					display: none;
+
+					&.is-open {
+						display: block;
+					}
+				}
+
 				div {
 					display: flex;
-
-					p {
-						cursor: pointer;
-						transition: 0.8s;
-
-						&:hover {
-							color: gold;
-						}
-					}
 				}
 			}
 		}
 	}
 }
 
+footer {
+	text-align: center;
+
+	img {
+		width: 75px;
+	}
+}
 
 
 

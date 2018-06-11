@@ -32,8 +32,10 @@ var AutoFillModule = function () {
 
 	//make strings into buttons
 	var createButton = function createButton(string) {
-		var button = document.createElement("button");
-		button.innerHTML = string;
+		var button = document.createElement("a");
+		button.href = '';
+		var buttonTitle = document.createTextNode(string);
+		button.appendChild(buttonTitle);
 		button.addEventListener("click", function (e) {
 			e.preventDefault();
 			country.value = string;
