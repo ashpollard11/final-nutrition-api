@@ -35,10 +35,10 @@ var EdamamModule = (function() {
 
 		axios.get(url, {
 			params: {
+				'q': country.value,
 				'app_id': API_ID,
 				'app_key': API_KEY,
-				'q': country.value,
-				'calories': "0-" + cal.value
+				'calories': cal.value
 			}
 		})
 		.then(function (results) {
@@ -110,7 +110,7 @@ var EdamamModule = (function() {
 
 				link.href = url;
 
-				calP.innerHTML = 'Calories: ' + Math.round(item.recipe.calories);
+				calP.innerHTML = 'Calories: ' + Math.round(item.recipe.calories / item.recipe.yield);
 
 				dietP.innerHTML = 'Diet Labels: ' + item.recipe.dietLabels;
 
