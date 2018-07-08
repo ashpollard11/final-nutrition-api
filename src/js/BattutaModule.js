@@ -12,8 +12,7 @@ var BattutaModule = (function() {
 	const searchBattuta = function () {
 		console.log('searchBattuta()')
 
-		const API_ID = '7225e88e';
-		const API_KEY = '77cdcb2c6066d9374e7fb75cab8316bc';
+		const API_KEY = '69438fea711a209a0b68c1cef72edb9a';
 		let url = 'http://circuslabs.net/proxies/battuta/';
 		
 

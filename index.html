@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -32,11 +32,19 @@
 				
 				<label>
 					Max Calories:
-					<input type="text" name="calories" id="calories" placeholder="1200">
+					<input type="number" name="calories" id="calories">
 				</label>
 				
-				<button type="button" id="search">Search</button>
+				
+				<button type="button" id="search" >Search</button>
+				
 			</form>
+
+			<div class="loading-cont">
+				<div class="loading-icon loading-icon-a"></div>
+				<div class="loading-icon loading-icon-b"></div>
+			</div>
+			
 
 			<ul id="results"></ul>
 
@@ -56,6 +64,8 @@
 		<script src="dist/js/EdamamModule.js"></script>
 		<script src="dist/js/BattutaModule.js"></script>
 		<script src="dist/js/AutofillModule.js"></script>
+		<script src="dist/js/Validator.js"></script>
+		<script src="dist/js/NumberRangeValidator.js"></script>
 		<script src="dist/js/main.js"></script>
 
 	</body>

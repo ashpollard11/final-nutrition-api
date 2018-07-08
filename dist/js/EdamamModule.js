@@ -4,8 +4,13 @@ var EdamamModule = function () {
 
 	//use the country to search countries
 	var country = document.querySelector('#country');
+
+	var countryErrorDiv = document.querySelector('#country .error-message');
+
 	//use the calories to search with maximum calories
 	var calories = document.querySelector('#calories');
+
+	// let errorDiv = document.querySelector('.error-message')
 
 	//search button
 	var search = document.querySelector('#search');
@@ -16,16 +21,29 @@ var EdamamModule = function () {
 	//form
 	var form = document.querySelector('.search-form');
 
+	//loader
+	var loader = document.querySelector('.loading-cont');
+
 	//on click of the search button, we loop through the
 	//checkboxes to see if there are any checked. If there
 	//are, we'll call the api to make a query search for each check
 	search.addEventListener('click', function (e) {
-		results.innerHTML = '';
-		searchEdamam(country, calories);
-		BattutaModule.searchBattuta();
-		country.value = '';
-		calories.value = '';
+		if (country.value !== '' || calories.value !== '') {
+			results.innerHTML = '';
+			showLoader();
+			searchEdamam(country, calories);
+
+			// BattutaModule.searchBattuta();
+		}
 	});
+
+	var showLoader = function showLoader() {
+		loader.classList.add('is-loading');
+	};
+
+	var hideLoader = function hideLoader() {
+		loader.classList.remove('is-loading');
+	};
 
 	var searchEdamam = function searchEdamam(country, cal) {
 
@@ -40,10 +58,11 @@ var EdamamModule = function () {
 				'q': country.value,
 				'app_id': API_ID,
 				'app_key': API_KEY,
-				'calories': cal.value
+				'calories': cal.value || null
 			}
 		}).then(function (results) {
 			console.log(results);
+			hideLoader();
 			displayRecipes(results.data.hits);
 		});
 	};
@@ -52,8 +71,6 @@ var EdamamModule = function () {
 
 		recipeArray.forEach(function (item) {
 			console.log(item.recipe);
-
-			// if (item.recipe.calories <= calories) {
 
 			//first, we make a container = li.
 			//container holding all the data
@@ -114,7 +131,10 @@ var EdamamModule = function () {
 
 			dietP.innerHTML = 'Diet Labels: ' + item.recipe.dietLabels;
 
-			healthP.innerHTML = 'Health Labels: ' + item.recipe.healthLabels;
+			healthP.innerHTML = 'Health Labels: ';
+			item.recipe.healthLabels.forEach(function (label) {
+				healthP.innerHTML += label + ', ';
+			});
 
 			ingredientsTitle.innerHTML = 'Ingredients ';
 
@@ -153,9 +173,6 @@ var EdamamModule = function () {
 					}
 				});
 			});
-			// } else {
-			// 	null
-			// }
 		});
 	};
 
