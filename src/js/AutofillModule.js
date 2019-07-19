@@ -2,10 +2,10 @@ var AutoFillModule = (function() {
 
 	var country = document.querySelector("[name=\"country\"]");
 	var suggestions = document.querySelector(".suggestions");
-	var inputValue = country.value;
+	//var inputValue = country.value;
 
 	window.addEventListener('load', function(e) {
-		BattutaModule.searchBattuta();
+		RestCountriesModule.searchRestCountries();
 	})
 
 	//on the release of a key, we add a value to the input field
@@ -17,10 +17,9 @@ var AutoFillModule = (function() {
 		//if the input value is empty, stop the function for now
 		if (inputValue.length <= 0) {
 			return
-		}
-		
+		}	
 
-		BattutaModule.countryArray.forEach ((item) => {
+		RestCountriesModule.countryArray.forEach ((item) => {
 			//return this string/state, make it lower case to match the input value,
 			//but check if it includes the input value
 			return item.toLowerCase().includes(inputValue)
@@ -37,12 +36,24 @@ var AutoFillModule = (function() {
 		button.appendChild(buttonTitle);
 		button.addEventListener ("click", function(e) {
 			e.preventDefault();
+			
+			//removes extra text from search result
+			if (string.includes("(")) {
+				let substr = string.slice(string.indexOf("(") - 1, string.indexOf(")") + 1);
+				string = string.replace(substr, "");	
+			}
+
 			country.value = string;
-			suggestions.innerHTML = ''
+			suggestions.innerHTML = '';
 		})
 		//this adds the button to the dom
 		suggestions.appendChild(button);
 
+		/////probably unnecessary
+		// country.addEventListener("blur", function(e) {
+		// 	suggestions.innerHTML = '';
+		// })
 	}
+
 
 })();
