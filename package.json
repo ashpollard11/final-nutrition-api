@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "natives": "^1.1.6",
-    "npm": "^5.8.0"
+    "npm": "^6.13.4"
   },
   "devDependencies": {
     "axios": "^0.18.1",
